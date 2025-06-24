@@ -1,10 +1,13 @@
-
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const ShopIntegrations: React.FC = () => {
   const [activeShop, setActiveShop] = useState<string>('');
   const [activeTab, setActiveTab] = useState<string>('problems');
+
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { elementRef: shopsRef, isVisible: shopsVisible } = useScrollAnimation();
 
   const shops = [
     { id: 'shopify', name: 'Shopify', color: 'from-green-500 to-green-600' },
@@ -54,11 +57,25 @@ export const ShopIntegrations: React.FC = () => {
   return (
     <section id="shop-integrations" data-section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-12">
+        <h2 
+          ref={titleRef}
+          className={`text-3xl md:text-4xl font-bold text-white text-center mb-12 transition-all duration-700 ${
+            titleVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+        >
           Our Shop Integrations
         </h2>
         
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div 
+          ref={shopsRef}
+          className={`grid md:grid-cols-3 gap-6 mb-8 transition-all duration-700 delay-200 ${
+            shopsVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+        >
           {shops.map((shop) => (
             <button
               key={shop.id}

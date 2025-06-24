@@ -1,22 +1,40 @@
 
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface QuickNavigationProps {
   scrollToSection: (sectionId: string) => void;
 }
 
 export const QuickNavigation: React.FC<QuickNavigationProps> = ({ scrollToSection }) => {
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { elementRef: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+
   return (
     <section className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-white mb-12">
+        <h2 
+          ref={titleRef}
+          className={`text-3xl md:text-4xl font-bold text-white mb-12 transition-all duration-700 ${
+            titleVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+        >
           Submit a support ticket or book a personal call with one of our{' '}
           <span className="bg-gradient-to-r from-[#5F33FF] to-[#8B5CF6] bg-clip-text text-transparent">
             E-Commerce specialists
           </span>
         </h2>
         
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div 
+          ref={cardsRef}
+          className={`grid md:grid-cols-2 gap-8 max-w-4xl mx-auto transition-all duration-700 delay-200 ${
+            cardsVisible 
+              ? 'opacity-100 translate-y-0' 
+              : 'opacity-0 translate-y-8'
+          }`}
+        >
           <button
             onClick={() => scrollToSection('shop-integrations')}
             className="group bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 hover:border-[#5F33FF]/50 hover:bg-white/10 transition-all duration-300 hover:scale-105"
