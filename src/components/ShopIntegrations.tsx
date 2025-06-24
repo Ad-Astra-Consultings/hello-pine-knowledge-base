@@ -6,8 +6,8 @@ export const ShopIntegrations: React.FC = () => {
   const [activeShop, setActiveShop] = useState<string>('');
   const [activeTab, setActiveTab] = useState<string>('problems');
 
-  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
-  const { elementRef: shopsRef, isVisible: shopsVisible } = useScrollAnimation();
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLHeadingElement>();
+  const { elementRef: shopsRef, isVisible: shopsVisible } = useScrollAnimation<HTMLDivElement>();
 
   const shops = [
     { id: 'shopify', name: 'Shopify', color: 'from-green-500 to-green-600' },

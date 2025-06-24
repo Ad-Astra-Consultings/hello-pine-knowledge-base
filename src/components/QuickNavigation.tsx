@@ -7,8 +7,8 @@ interface QuickNavigationProps {
 }
 
 export const QuickNavigation: React.FC<QuickNavigationProps> = ({ scrollToSection }) => {
-  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
-  const { elementRef: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLHeadingElement>();
+  const { elementRef: cardsRef, isVisible: cardsVisible } = useScrollAnimation<HTMLDivElement>();
 
   return (
     <section className="py-20">

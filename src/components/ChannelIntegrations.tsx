@@ -6,8 +6,8 @@ export const ChannelIntegrations: React.FC = () => {
   const [activeChannel, setActiveChannel] = useState<string>('');
   const [activeTab, setActiveTab] = useState<string>('problems');
 
-  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation();
-  const { elementRef: channelsRef, isVisible: channelsVisible } = useScrollAnimation();
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLHeadingElement>();
+  const { elementRef: channelsRef, isVisible: channelsVisible } = useScrollAnimation<HTMLDivElement>();
 
   const channels = [
     { id: 'otto', name: 'Otto', color: 'from-red-500 to-red-600' },

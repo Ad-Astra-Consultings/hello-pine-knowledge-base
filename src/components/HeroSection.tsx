@@ -3,9 +3,9 @@ import React from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 export const HeroSection: React.FC = () => {
-  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation({ threshold: 0.3 });
-  const { elementRef: subtitleRef, isVisible: subtitleVisible } = useScrollAnimation({ threshold: 0.3 });
-  const { elementRef: buttonsRef, isVisible: buttonsVisible } = useScrollAnimation({ threshold: 0.3 });
+  const { elementRef: titleRef, isVisible: titleVisible } = useScrollAnimation<HTMLHeadingElement>({ threshold: 0.3 });
+  const { elementRef: subtitleRef, isVisible: subtitleVisible } = useScrollAnimation<HTMLHeadingElement>({ threshold: 0.3 });
+  const { elementRef: buttonsRef, isVisible: buttonsVisible } = useScrollAnimation<HTMLDivElement>({ threshold: 0.3 });
 
   return (
     <section id="home" data-section className="min-h-screen flex items-center pt-16">
